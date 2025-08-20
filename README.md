@@ -24,7 +24,7 @@ Ensure the following are installed in your system:
 ---
 
 ## Run
-Download the zip or clone via https://github.com/HTTPS-AMISHI-IN/SuvidhaSetu.git
+Download the zip or clone via https://github.com/manyaa1/SuvidhaSetu.git
 
 ### Install the following in terminal, make sure your path is directed towards this folder
 ```bash
