@@ -5,8 +5,9 @@ on:
     branches:
       - main
 
+# Give the GITHUB_TOKEN write permission so the action can push to gh-pages
 permissions:
-  contents: read
+  contents: write
   pages: write
 
 jobs:
@@ -15,6 +16,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Debug git remote (optional - remove if you don't want logs)
+        run: |
+          echo "GITHUB_ACTOR=${GITHUB_ACTOR}"
+          git --version
+          git remote -v
 
       - name: Use Node.js 18
         uses: actions/setup-node@v4
@@ -26,7 +36,6 @@ jobs:
         run: npm ci
 
       - name: Build
-        # Prevent CI from treating ESLint warnings as errors so build can succeed
         env:
           CI: "false"
         run: npm run build
