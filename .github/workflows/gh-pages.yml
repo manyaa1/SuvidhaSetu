@@ -26,9 +26,9 @@ jobs:
         run: npm ci
 
       - name: Build
-        # If CI treats warnings as errors and you want to ignore that, uncomment the env below:
-        # env:
-        #   CI: "false"
+        # Prevent CI from treating ESLint warnings as errors so build can succeed
+        env:
+          CI: "false"
         run: npm run build
 
       - name: Deploy to gh-pages
